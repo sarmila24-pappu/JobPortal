@@ -1,0 +1,20 @@
+package com.jobportal.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+    private String description;
+
+    public Job() {}
+    public Job(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    // Getters and Setters
+}

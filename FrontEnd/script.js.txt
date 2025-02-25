@@ -1,0 +1,11 @@
+fetch("http://localhost:8080/jobs")
+    .then(response => response.json())
+    .then(data => {
+        const jobList = document.getElementById("job-list");
+        data.forEach(job => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h2>${job.title}</h2><p>${job.description}</p>`;
+            jobList.appendChild(div);
+        });
+    })
+    .catch(error => console.log("Error fetching jobs:", error));
