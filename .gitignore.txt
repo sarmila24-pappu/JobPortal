@@ -1,0 +1,33 @@
+# Ignore Maven target directory
+/target/
+/out/
+
+# Ignore IntelliJ IDEA, Eclipse, VS Code, and NetBeans settings
+/.idea/
+/*.iml
+/.vscode/
+/.nbproject/
+/.classpath
+/.project
+/.settings/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+/logs/
+/*.log
+/spring.log
+
+# Ignore environment variables and sensitive files
+.env
+application.properties
+application.yml
+
+# Ignore dependencies (Maven)
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+dependency-reduced-pom.xml
+release.properties

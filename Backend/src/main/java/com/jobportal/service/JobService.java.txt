@@ -1,0 +1,36 @@
+package com.jobportal.service;
+
+import com.jobportal.model.Job;
+import com.jobportal.repository.JobRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class JobService {
+
+    @Autowired
+    private JobRepository jobRepository;
+
+    // 1. Post a new job
+    public Job postJob(Job job) {
+        return jobRepository.save(job);
+    }
+
+    // 2. Get all jobs
+    public List<Job> getAllJobs() {
+        return jobRepository.findAll();
+    }
+
+    // 3. Get job by ID
+    public Optional<Job> getJobById(Long id) {
+        return jobRepository.findById(id);
+    }
+
+    // 4. Delete a job by ID
+    public void deleteJob(Long id) {
+        jobRepository.deleteById(id);
+    }
+}

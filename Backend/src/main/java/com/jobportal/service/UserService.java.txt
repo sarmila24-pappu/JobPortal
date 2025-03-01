@@ -1,0 +1,43 @@
+package com.jobportal.service;
+
+import com.jobportal.model.User;
+import com.jobportal.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    // 1. Register a new user
+    public User registerUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("Email already exists!");
+        }
+        return userRepository.save(user);
+    }
+
+    // 2. Get all users
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    // 3. Get user by ID
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+    }
+
+    // 4. Delete user by ID
+    public void deleteUser(Long id) {
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException("User not found!");
+        }
+        userRepository.deleteById(id);
+    }
+}
